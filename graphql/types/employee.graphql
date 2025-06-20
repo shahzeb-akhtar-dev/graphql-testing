@@ -1,0 +1,32 @@
+type Employee {
+    id: ID!
+    name: String!
+    email: String!
+    address: String!
+    age: Int!
+}
+
+input CreateEmployeeInput {
+    name: String!
+    email: String!
+    address: String!
+    age: Int!
+}
+
+input UpdateEmployeeInput {
+    name: String!
+    email: String!
+    address: String!
+    age: Int!
+}
+
+extend type Query {
+    employee:[Employee!]!@all
+    employee(id:ID!):Employee @find
+}
+
+mutation {
+createEmployee(input:CreateEmployeeInput!):Employee @create
+updateEmployee(id:ID!,input:UpdateEmployeeInput!):Employee @update
+deleteEmployee(id:ID!):Employee @delete
+}
