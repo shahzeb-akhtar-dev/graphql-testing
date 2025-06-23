@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 return [
     /*
@@ -73,7 +75,9 @@ return [
     |
     */
 
-    'schema_path' => base_path('graphql/schema.graphql'),
+    'schema' => [
+        'register' => base_path('graphql/schema.graphql')
+    ],
 
     /*
     |--------------------------------------------------------------------------

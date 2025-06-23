@@ -21,11 +21,12 @@ input UpdateEmployeeInput {
 }
 
 extend type Query {
-    employee:[Employee!]!@all
-    employee(id:ID!):Employee @find
+    employees:[Employee!]! @paginate(defaultCount:10)
+    employee(id: Int! @eq): Employee @find
+    # employee(email: String!): Employee @first
 }
 
-mutation {
+extend type mutation {
 createEmployee(input:CreateEmployeeInput!):Employee @create
 updateEmployee(id:ID!,input:UpdateEmployeeInput!):Employee @update
 deleteEmployee(id:ID!):Employee @delete
